@@ -5,15 +5,18 @@ from pirate_speak.chain import chain as pirate_speak_chain
 
 app = FastAPI()
 
-add_routes(app, pirate_speak_chain, path="/pirate-speak")
-
+add_routes(
+    app,
+    pirate_speak_chain,
+    path="/mine",
+    playground_type="chat",
+    enable_feedback_endpoint=True,
+    enable_public_trace_link_endpoint=True,
+)
 
 @app.get("/")
-def root():
-    return {
-        "message": "Welcome to the langserve server! More information and routes can be found at /docs. 🦜 🏓",
-    }
-
+async def redirect_root_to_docs():
+    return RedirectResponse("/docs")
 
 @app.get("/health")
 def health_check():

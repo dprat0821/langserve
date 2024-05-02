@@ -11,7 +11,7 @@ _prompt = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            "Translate user input into pirate speak",
+            "Translate user input into old english man speak",
         ),
         ("human", "{text}"),
     ]
